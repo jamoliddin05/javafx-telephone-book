@@ -1,6 +1,6 @@
 # Contact Management Application
 
-A simple Java-based application to manage contacts using PostgreSQL as the database.
+A simple JavaFX-based application to manage contacts using PostgreSQL as the database.
 
 ## Getting Started
 
