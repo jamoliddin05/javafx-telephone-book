@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.*?>
+
+<VBox xmlns="http://javafx.com/javafx/15.0.1"
+      xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="org.openjfx.controllers.UserController">
+    <padding>
+        <Insets top="10" right="10" bottom="10" left="10"/>
+    </padding>
+    <spacing>10</spacing>
+
+    <!-- Header Section -->
+    <HBox alignment="CENTER_LEFT" spacing="10" style="-fx-background-color: #e8f5e9; -fx-padding: 10; -fx-border-color: #c8e6c9; -fx-border-radius: 5; -fx-background-radius: 5;">
+        <Label fx:id="loggedInUserLabel" text="Username"/>
+        <Region HBox.hgrow="ALWAYS"/>
+        <Button text="Logout" onAction="#handleLogout" style="-fx-text-fill: #ffffff; -fx-background-color: #f44336; -fx-background-radius: 5; -fx-padding: 5 15;" />
+    </HBox>
+
+    <!-- Input Section -->
+    <!-- Input Section -->
+    <HBox spacing="10" alignment="CENTER">
+        <Label text="Name:"/>
+        <TextField fx:id="nameField"/>
+
+        <Label text="Phone:"/>
+        <TextField fx:id="phoneField"/>
+    </HBox>
+
+    <!-- Buttons -->
+    <HBox spacing="10">
+        <Button text="Add Contact" fx:id="addButton" onAction="#addContact"/>
+        <Button text="Remove Contact" fx:id="removeButton" onAction="#removeContact"/>
+        <Button text="Search Contact" fx:id="searchButton" onAction="#searchContact"/>
+        <Button text="Update Contact" onAction="#updateContact"/>
+    </HBox>
+
+    <!-- Contact List -->
+    <ListView fx:id="contactsListView" VBox.vgrow="ALWAYS"/>
+</VBox>
