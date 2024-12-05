@@ -74,6 +74,24 @@ public class UserService {
         return false;
     }
 
+    public boolean contactExists(String username, String name) {
+        String query = "SELECT 1 FROM contacts WHERE username = ? AND name = ?";
+        try (Connection conn = DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD);
+             PreparedStatement pstmt = conn.prepareStatement(query)) {
+
+            pstmt.setString(1, username);
+            pstmt.setString(2, name);
+            ResultSet rs = pstmt.executeQuery();
+
+            return rs.next(); // Returns true if a record exists
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+
+
     public boolean validateUser(String username, String password) {
         String query = "SELECT password FROM users WHERE username = ?";
         try (Connection conn = DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD);

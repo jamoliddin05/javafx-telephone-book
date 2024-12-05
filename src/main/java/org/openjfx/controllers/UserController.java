@@ -77,6 +77,12 @@ public class UserController {
             return;
         }
 
+        // Check if the contact with the same name already exists
+        if (userService.contactExists(loggedInUser.getUsername(), name)) {
+            showAlert(Alert.AlertType.ERROR, "Error", "A contact with the same name already exists.");
+            return;
+        }
+
         // Add contact to the database
         userService.addContact(loggedInUser.getUsername(), name, phone);
 
@@ -195,6 +201,12 @@ public class UserController {
         // Get the new name and phone number from the input fields
         String newName = nameField.getText();
         String newPhoneNumber = phoneField.getText();
+
+        // Check if the contact with the same name already exists
+        if (userService.contactExists(loggedInUser.getUsername(), newName)) {
+            showAlert(Alert.AlertType.ERROR, "Error", "A contact with the same name already exists.");
+            return;
+        }
 
         // If both fields are empty, show an alert
         if (newName.isEmpty() && newPhoneNumber.isEmpty()) {
