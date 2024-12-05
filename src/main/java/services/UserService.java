@@ -3,16 +3,19 @@ package services;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
+import io.github.cdimascio.dotenv.Dotenv;
 
 import models.User;
 
 public class UserService {
     private static volatile UserService instance = null; // Volatile for thread safety
+    private static final Dotenv dotenv = Dotenv.load();
 
     // PostgreSQL Database Connection Configuration
-    private static final String DB_URL = "jdbc:postgresql://localhost:5432/telephone_db";
-    private static final String DB_USER = "jamoliddin"; // Replace with your PostgreSQL username
-    private static final String DB_PASSWORD = ""; // Replace with your PostgreSQL password
+    private static final String DB_URL = dotenv.get("DB_URL");
+    private static final String DB_USER = dotenv.get("DB_USER");
+    private static final String DB_PASSWORD = dotenv.get("DB_PASSWORD");
+
     private static final String USERS_TABLE_CREATE_QUERY =
             "CREATE TABLE IF NOT EXISTS users (" +
                     "username VARCHAR(255) PRIMARY KEY, " +

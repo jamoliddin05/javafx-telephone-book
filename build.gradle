@@ -9,6 +9,7 @@ repositories {
 
 dependencies {
     implementation 'org.postgresql:postgresql:42.7.2'
+    implementation 'io.github.cdimascio:java-dotenv:5.2.2'
 }
 
 javafx {
